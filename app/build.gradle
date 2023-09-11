@@ -15,13 +15,19 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    // Use TestNG framework, also requires calling test.useTestNG() below
-    testImplementation 'org.testng:testng:7.5'
+//dependencies {
+//    // Use TestNG framework, also requires calling test.useTestNG() below
+//    testImplementation 'org.testng:testng:7.5'
+//
+//    // This dependency is used by the application.
+//    implementation 'com.google.guava:guava:31.1-jre'
+    dependencies {
+        testImplementation 'org.testng:testng:7.6.1'
+        // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
+        implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.11.0'
+        implementation 'io.github.bonigarcia:webdrivermanager:5.1.1'
+    }
 
-    // This dependency is used by the application.
-    implementation 'com.google.guava:guava:31.1-jre'
-}
 
 // Apply a specific Java toolchain to ease working on different environments.
 java {
@@ -35,7 +41,10 @@ application {
     mainClass = 'magento_first5.App'
 }
 
-tasks.named('test') {
-    // Use TestNG for unit tests.
+//tasks.named('test') {
+//    // Use TestNG for unit tests.
+//    useTestNG()
+//}
+test{
     useTestNG()
 }
