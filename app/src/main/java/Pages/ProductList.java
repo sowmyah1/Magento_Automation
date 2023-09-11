@@ -23,8 +23,9 @@ public class ProductList extends BasePage{
 
         pageActions.click(item1);
         pageActions.click(this.addToCart);
-        pageWaits.waitForElementToBePresent(this.cartList);
+        pageWaits.waitForElementToBePresent(this.cartList).click();
         pageActions.click(this.cartList);
+
         pageWaits.waitForElementToBePresent(this.proccedToCheckOut).click();
         pageWaits.waitForElementToBePresent(this.itemCount).click();
         WebElement element = webDriver.findElement(By.cssSelector("#opc-sidebar > div.opc-block-summary > div > div.title > strong > span:nth-child(1)"));

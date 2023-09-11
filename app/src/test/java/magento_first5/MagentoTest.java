@@ -50,7 +50,7 @@ public class MagentoTest {
         Assert.assertEquals(login,expected,"Login unsuccessful");
 
     }
-    @Test
+    @Test(groups = "sanity")
     void resetPassword() throws InterruptedException {
         String browser = "Chrome";
         String expected ="You saved the account information.";
@@ -66,7 +66,7 @@ public class MagentoTest {
 
 
     }
-    @Test
+    @Test(groups = "sanity")
     void productList(){
         By item1 = By.cssSelector("#maincontent > div.columns > div.column.main > div.widget.block.block-static-block > div.block.widget.block-products-list.grid > div > div > ol > li:nth-child(3) > div > div > strong > a");
         By item2 = By.cssSelector("#maincontent > div.columns > div.column.main > div.widget.block.block-static-block > div.block.widget.block-products-list.grid > div > div > ol > li:nth-child(2) > div > div > strong > a");
@@ -88,7 +88,7 @@ public class MagentoTest {
 
     }
 
-    @Test
+    @Test(groups = "sanity")
     void shoppingCart(){
         String item = "Affirm Water Bottle";
         String browser ="Chrome";
