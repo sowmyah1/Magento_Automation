@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="MyTest">
+        <groups>
+            <run>
+                <!-- Specify the names of the test groups you want to include -->
+                <include name="sanity" />
+                <!--<include name="group2" />-->
+            </run>
+        </groups>
+        <classes>
+            <!-- Add the fully qualified class names here -->
+            <class name="magento_first5.MagentoTest" />
+
+        </classes>
+    </test>
+</suite>

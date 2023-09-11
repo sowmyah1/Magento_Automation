@@ -1,32 +1,21 @@
+package magento_first5;
+
 import Driver.DriverCreator;
 import Pages.*;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
-import java.util.concurrent.TimeUnit;
-
-public class test {
+public class MagentoTest {
     WebDriver driver = new ChromeDriver();
     String emailaddress = "qwerty1q2qqwert3@gmail.com";
     String testpassword = "12345Qwerty";
     String updatedPassword = "12345Qwerty";
-//
-//    @DataProvider(name ="UserDetails")
-//    public object[][] userDetailsProvider(){
-//        return new object[][] {
-//                ("qwerty1q2qqwert3@gmail.com","12345Qwerty",)
-//        }
-//    }
-    @Test
+
+
+    @Test(groups = "sanity")
     void registerdetails() {
         String firstName = "alpha";
         String lastName = "h";
@@ -45,7 +34,7 @@ public class test {
         Assert.assertEquals(name, name, "Account not created");
     }
 //
-    @Test
+    @Test(groups = "sanity")
     void loginDetails() throws InterruptedException {
         String browser = "Chrome";
         String expected ="Welcome, alpha h!";
@@ -79,6 +68,8 @@ public class test {
     }
     @Test
     void productList(){
+        By item1 = By.cssSelector("#maincontent > div.columns > div.column.main > div.widget.block.block-static-block > div.block.widget.block-products-list.grid > div > div > ol > li:nth-child(3) > div > div > strong > a");
+        By item2 = By.cssSelector("#maincontent > div.columns > div.column.main > div.widget.block.block-static-block > div.block.widget.block-products-list.grid > div > div > ol > li:nth-child(2) > div > div > strong > a");
         String item = "Affirm Water Bottle";
         String browser ="Chrome";
         WebDriver webDriver = new DriverCreator().create(browser);
@@ -87,9 +78,13 @@ public class test {
         pageActions.navigateTo("https://magento.softwaretestingboard.com/gear.html",webDriver);
 
         ProductList productList= new ProductList(webDriver);
-        String count = productList.setCartList(item);
+        int count1 = productList.setCartList(item,item1);
 
-        Assert.assertEquals(count,"1","number of items not in match");
+        Assert.assertEquals(count1,1,"number of items not in match");
+        pageActions.navigateTo("https://magento.softwaretestingboard.com/gear.html",webDriver);
+
+        int count2 = productList.setCartList(item,item2);
+        Assert.assertEquals(count2,2,"number of items not in match");
 
     }
 
